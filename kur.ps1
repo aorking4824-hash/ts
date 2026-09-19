@@ -219,7 +219,7 @@ if ($Kisayol) {
         $ws  = New-Object -ComObject WScript.Shell
         $s   = $ws.CreateShortcut($lnk)
         $s.TargetPath       = Join-Path $env:WINDIR 'System32\WindowsPowerShell\v1.0\powershell.exe'
-        $s.Arguments        = '-NoProfile -ExecutionPolicy Bypass -STA -File "{0}"' -f $Giris
+        $s.Arguments        = '-NoProfile -ExecutionPolicy Bypass -STA -WindowStyle Hidden -File "{0}"' -f $Giris
         $s.WorkingDirectory = $Kok
         $s.IconLocation     = 'shell32.dll,21'
         $s.Description      = 'Teknik Suite'
@@ -242,8 +242,8 @@ if ($PSVersionTable.PSEdition -ne 'Core' -and (Test-Path -LiteralPath (Join-Path
 if (-not (Test-Path -LiteralPath $psExe)) { $psExe = 'powershell.exe' }
 
 Adim 'Teknik Suite baslatiliyor (yonetici izni istenecek)...'
-$p = Start-Process -FilePath $psExe -WorkingDirectory $Kok -PassThru -ArgumentList @(
-    '-NoProfile', '-ExecutionPolicy', 'Bypass', '-STA', '-File', ('"{0}"' -f $Giris)
+$p = Start-Process -FilePath $psExe -WorkingDirectory $Kok -PassThru -WindowStyle Hidden -ArgumentList @(
+    '-NoProfile', '-ExecutionPolicy', 'Bypass', '-STA', '-WindowStyle', 'Hidden', '-File', ('"{0}"' -f $Giris)
 )
 if ($Bekle -and $p) { $p.WaitForExit() }
 Write-Host ''
