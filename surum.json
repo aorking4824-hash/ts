@@ -1,8 +1,8 @@
 {
-    "surum":  "1.1.1",
+    "surum":  "1.1.2",
     "tarih":  "2026-09-19",
-    "paket":  "https://github.com/aorking4824-hash/ts/releases/download/v1.1.1/TeknikSuite-1.1.1.zip",
-    "sha256":  "2D9938FDCF521A0EF4F4D5900ABD603E095857F748812E813618A8C30921C624",
-    "boyut":  98865,
+    "paket":  "https://github.com/aorking4824-hash/ts/releases/download/v1.1.2/TeknikSuite-1.1.2.zip",
+    "sha256":  "536C46BB35E53FC4F77962DBDA2294652C53EBE239211CA7A1FC7B9A61C6A369",
+    "boyut":  99291,
     "asgari":  "5.1"
 }
