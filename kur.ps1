@@ -62,7 +62,7 @@ function Get-Boyut {
 
 Write-Host ''
 Write-Host '  ===============================================' -ForegroundColor DarkCyan
-Write-Host '   TEKNIK SUITE  -  web kurulum' -ForegroundColor White
+Write-Host '   SBB BILGI ISLEM  -  web kurulum' -ForegroundColor White
 Write-Host '  ===============================================' -ForegroundColor DarkCyan
 Write-Host ''
 
@@ -103,7 +103,7 @@ if ($Kaldir) {
         $c = Read-Host '  Gunlukler ve yedekler dahil her sey silinsin mi? (e/H)'
         if ($c -notmatch '^(e|E|y|Y)') { Yaz 'Vazgecildi.' 'DarkGray'; return }
     }
-    $kisa = Join-Path ([Environment]::GetFolderPath('Desktop')) 'Teknik Suite.lnk'
+    $kisa = Join-Path ([Environment]::GetFolderPath('Desktop')) 'SBB Bilgi Islem.lnk'
     if (Test-Path -LiteralPath $kisa) { Remove-Item -LiteralPath $kisa -Force -ErrorAction SilentlyContinue }
     Remove-Item -LiteralPath $Kok -Recurse -Force
     Tamam 'Kaldirildi.'
@@ -215,14 +215,14 @@ if ($guncelMi -and -not $Zorla) {
 # --------------------------------------------------------------- Kisayol ----
 if ($Kisayol) {
     try {
-        $lnk = Join-Path ([Environment]::GetFolderPath('Desktop')) 'Teknik Suite.lnk'
+        $lnk = Join-Path ([Environment]::GetFolderPath('Desktop')) 'SBB Bilgi Islem.lnk'
         $ws  = New-Object -ComObject WScript.Shell
         $s   = $ws.CreateShortcut($lnk)
         $s.TargetPath       = Join-Path $env:WINDIR 'System32\WindowsPowerShell\v1.0\powershell.exe'
         $s.Arguments        = '-NoProfile -ExecutionPolicy Bypass -STA -WindowStyle Hidden -File "{0}"' -f $Giris
         $s.WorkingDirectory = $Kok
         $s.IconLocation     = 'shell32.dll,21'
-        $s.Description      = 'Teknik Suite'
+        $s.Description      = 'SBB Bilgi Islem'
         $s.Save()
         Tamam 'Masaustu kisayolu olusturuldu.'
     } catch { Uyari ('Kisayol olusturulamadi: {0}' -f $_.Exception.Message) }
@@ -241,7 +241,7 @@ if ($PSVersionTable.PSEdition -ne 'Core' -and (Test-Path -LiteralPath (Join-Path
 }
 if (-not (Test-Path -LiteralPath $psExe)) { $psExe = 'powershell.exe' }
 
-Adim 'Teknik Suite baslatiliyor (yonetici izni istenecek)...'
+Adim 'SBB Bilgi Islem baslatiliyor (yonetici izni istenecek)...'
 $p = Start-Process -FilePath $psExe -WorkingDirectory $Kok -PassThru -WindowStyle Hidden -ArgumentList @(
     '-NoProfile', '-ExecutionPolicy', 'Bypass', '-STA', '-WindowStyle', 'Hidden', '-File', ('"{0}"' -f $Giris)
 )
